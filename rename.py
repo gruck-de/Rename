@@ -1,8 +1,12 @@
 import os
 import exifread
 import sys
+
+# Choose of current folder or specific folder.
+# TODO: Put in separate config or pass as parameter on start
 folder = ""
 #folder = os.curdir
+
 
 if os.path.isdir(folder):
     count = 0

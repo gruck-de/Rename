@@ -2,10 +2,17 @@ import os
 import exifread
 import sys
 
-# Choose of current folder or specific folder.
-# TODO: Put in separate config or pass as parameter on start
-folder = ""
-#folder = os.curdir
+# Add Standard folder here for fallback
+standard_folder = ""
+
+# check if argument has been passed 
+if(len(sys.argv))>1:
+    folder = sys.argv[1]
+    if not os.path.isdir(folder):
+        print("Passed argument \"{0}\" is not a valid folder!".format(sys.argv[1]))
+        folder = standard_folder
+    else:
+        print("Passed folder is {0}".format(sys.argv[1]))
 
 
 if os.path.isdir(folder):
@@ -61,4 +68,4 @@ if os.path.isdir(folder):
     print("Files renamed: ", end='')
     print(count)
 else:
-    print(folder ," does not exist!!")
+    print("Folder \"{0}\" does not exist!!".format(folder))
